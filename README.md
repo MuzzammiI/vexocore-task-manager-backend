@@ -1,135 +1,169 @@
-Task Manager Backend
-This is the backend for the Task Manager app, built with Node.js, Express, and MongoDB. It provides API endpoints for user authentication (JWT) and task management (CRUD operations, status toggling).
-Features
+# Task Manager Backend 🚀
 
-User signup and login with JWT authentication.
-Task creation, editing, deletion, and status toggling.
-MongoDB Atlas for data storage.
-Deployed on Render for free hosting.
+This repository contains the backend for the Task Manager application, built with **Node.js**, **Express**, and **MongoDB**. It provides a robust REST API for user authentication and complete task management.
 
-Prerequisites
+---
 
-Node.js (v16 or higher)
-MongoDB Atlas account
-Render account (for deployment)
-GitHub account
+## ✨ Features
 
-Setup
+-   ✅ **User Authentication**: Secure user signup and login using JSON Web Tokens (JWT).
+-   ✅ **Task Management**: Full CRUD (Create, Read, Update, Delete) operations for tasks.
+-   ✅ **Status Toggling**: Easily toggle the completion status of any task.
+-   ✅ **Cloud Database**: Utilizes MongoDB Atlas for reliable and scalable data storage.
+-   ✅ **Live Deployment**: Hosted on Render for continuous and accessible service.
 
-Clone the Repository (if not already done):
-git clone https://github.com/MuzzammiI/vexocore-task-manager-backend.git
-cd vexocore-task-manager-backend
+---
 
+## 🛠️ Tech Stack
 
-Install Dependencies:
-npm install
+-   **Backend**: Node.js, Express.js
+-   **Database**: MongoDB (with Mongoose)
+-   **Authentication**: JSON Web Tokens (JWT), bcrypt.js
+-   **Deployment**: Render
 
+---
 
-Configure Environment:Create a .env file in the backend directory based on .env.example:
-MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/task-manager?retryWrites=true&w=majority
-JWT_SECRET=your_jwt_secret
-PORT=5000 // only for testing purpose
+## 🚀 Getting Started
 
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
 
-Replace <username> and <password> with your MongoDB Atlas credentials.
-Ensure MongoDB Atlas allows connections from 0.0.0.0/0 (all IPs) for Render.
+### Prerequisites
 
+Make sure you have the following installed on your machine:
 
-Run Locally:
+-   [Node.js](https://nodejs.org/) (v16 or higher)
+-   A [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) account
+-   A [Render](https://render.com/) account (for deployment)
+-   A [GitHub](https://github.com/) account
+
+### Installation & Setup
+
+1.  **Clone the Repository**
+    ```bash
+    git clone [https://github.com/MuzzammiI/vexocore-task-manager-backend.git](https://github.com/MuzzammiI/vexocore-task-manager-backend.git)
+    cd vexocore-task-manager-backend
+    ```
+
+2.  **Install Dependencies**
+    ```bash
+    npm install
+    ```
+
+3.  **Configure Environment Variables**
+
+    Create a `.env` file in the root directory and add the following variables. You can use the `.env.example` file as a template.
+
+    ```dotenv
+    # MongoDB Connection String
+    MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/task-manager?retryWrites=true&w=majority
+
+    # JWT Secret for token signing
+    JWT_SECRET=your_super_secret_jwt_key
+
+    # Port for the local server
+    PORT=5000
+    ```
+
+    -   Replace `<username>` and `<password>` with your actual MongoDB Atlas credentials.
+    -   For Render deployment, ensure your MongoDB Atlas cluster allows connections from all IP addresses (`0.0.0.0/0`).
+
+---
+
+## 💻 Running Locally
+
+To start the development server, run the following command:
+
+```bash
 npm run dev
+```
 
-The server runs on http://localhost:5000. Test endpoints with curl or Postman:
-curl -X POST http://localhost:5000/api/auth/signup -H "Content-Type: application/json" -d '{"email":"test@example.com","password":"password123"}'
+The server will start on `http://localhost:5000`.
 
+You can test the API endpoints using a tool like Postman or a `curl` command. For example, to sign up a new user:
 
+```bash
+curl -X POST http://localhost:5000/api/auth/signup \
+-H "Content-Type: application/json" \
+-d '{"email":"test@example.com", "password":"password123"}'
+```
 
-Deployment (Render)
+---
 
-Push to GitHub:
-git add .
-git commit -m "Initial backend commit"
-git push origin main
+## ☁️ Deployment on Render
 
+This project is configured for easy deployment on Render.
 
-Create a Web Service on Render:
+1.  **Push to GitHub**
 
-Sign up at render.com.
-In Render Dashboard, click New > Web Service.
-Connect your GitHub repository (vexocore-task-manager-backend).
-Configure:
-Name: vexocore-task-manager-backend
-Environment: Node
-Region: Closest to you 
-Branch: main
-Root Directory: . (or backend if in a monorepo)
-Build Command: npm install
-Start Command: npm start
+    Commit your changes and push them to your GitHub repository.
+    ```bash
+    git add .
+    git commit -m "Prepare for deployment"
+    git push origin main
+    ```
 
+2.  **Create a Web Service on Render**
 
-Add environment variables:
-MONGO_URI: Your MongoDB Atlas connection string
-JWT_SECRET: Your secret key
-PORT: 5000 //testing purpose only
+    -   Sign in to your [Render Dashboard](https://dashboard.render.com/).
+    -   Click **New > Web Service**.
+    -   Connect your GitHub account and select the `vexocore-task-manager-backend` repository.
+    -   Configure the service with the following settings:
+        -   **Name**: `vexocore-task-manager-backend` (or your preference)
+        -   **Environment**: `Node`
+        -   **Region**: Choose the one closest to you.
+        -   **Branch**: `main`
+        -   **Build Command**: `npm install`
+        -   **Start Command**: `npm start`
 
+3.  **Add Environment Variables**
 
-Select Free plan and click Create Web Service.
+    In the "Environment" section, add the `MONGO_URI` and `JWT_SECRET` from your `.env` file. **Do not add the PORT variable**, as Render will assign it automatically.
 
+4.  **Create Service**
 
-Verify Deployment:
+    -   Select the **Free** plan.
+    -   Click **Create Web Service**. Render will automatically build and deploy your application.
 
-Render builds and deploys (~2-5 minutes).
-Note the URL (e.g., https://task-manager-backend.onrender.com).
-Test the API:curl -X POST https://task-manager-backend.onrender.com/api/auth/signup -H "Content-Type: application/json" -d '{"email":"test@example.com","password":"password123"}'
+5.  **Verify Deployment**
 
+    Once the deployment is complete, Render will provide a public URL (e.g., `https://task-manager-backend.onrender.com`). Test it with `curl`:
+    ```bash
+    curl -X POST [https://your-app-name.onrender.com/api/auth/signup](https://your-app-name.onrender.com/api/auth/signup) \
+    -H "Content-Type: application/json" \
+    -d '{"email":"test@example.com", "password":"password123"}'
+    ```
 
+---
 
+## 🔧 Troubleshooting
 
+-   **MongoDB Connection Issues**: Double-check your `MONGO_URI` in the Render environment variables. Ensure your MongoDB Atlas IP Access List is set to `0.0.0.0/0` to allow connections from Render's servers.
 
-Troubleshooting
+-   **CORS Issues**: The `server.js` file is configured to allow requests from specific frontend URLs. If your frontend is hosted elsewhere, add its URL to the `cors` options:
+    ```javascript
+    app.use(cors({
+      origin: ['http://localhost:5173', '[https://your-frontend-url.com](https://your-frontend-url.com)'],
+      credentials: true,
+    }));
+    ```
+    Remember to redeploy after making changes.
 
-MongoDB Connection Issues:
+-   **API Request Errors**: Use Postman or `curl` to test your deployed endpoints directly. This helps isolate whether the issue is in the frontend or backend. Ensure the frontend is using the correct base URL for API requests (e.g., `https://task-manager-backend.onrender.com/api`).
 
-Verify MONGO_URI is correct and MongoDB Atlas allows connections from 0.0.0.0/0.
-Test connection locally:npm run dev
+---
 
+## 📝 API Endpoints
 
-Check terminal logs for MongoDB errors.
+All task-related endpoints require a valid JWT to be sent in the `Authorization` header as a `Bearer` token.
 
+| Method  | Endpoint                | Description                  | Protected |
+| :------ | :---------------------- | :--------------------------- | :-------- |
+| `POST`  | `/api/auth/signup`      | Register a new user          | No        |
+| `POST`  | `/api/auth/login`       | Log in an existing user      | No        |
+| `GET`   | `/api/tasks`            | Get all tasks for user       | **Yes** |
+| `POST`  | `/api/tasks`            | Create a new task            | **Yes** |
+| `PUT`   | `/api/tasks/:id`        | Update an existing task      | **Yes** |
+| `DELETE`| `/api/tasks/:id`        | Delete a task                | **Yes** |
+| `PATCH` | `/api/tasks/:id/toggle` | Toggle a task's status       | **Yes** |
 
-CORS Issues:
-
-Ensure server.js allows the frontend URL:app.use(cors({
-  origin: ['http://localhost:5173', 'https://task-manager-frontend.vercel.app'],
-  credentials: true,
-}));
-
-
-Redeploy after updating CORS:git add .
-git commit -m "Update CORS"
-git push
-
-
-
-
-API Request Errors:
-
-Test endpoints directly with curl or Postman to isolate issues.
-Ensure the frontend uses the correct VITE_API_URL (e.g., https://task-manager-backend.onrender.com/api).
-
-
-
-Notes
-
-Free tier limits: Render’s free tier (512 MB RAM, 0.1 CPU) sleeps after 15 minutes of inactivity, suitable for low-traffic apps (~300-400 users/month).
-Use a strong JWT_SECRET for security.
-Monitor Render logs in the dashboard for runtime errors.
-
-API Endpoints
-
-POST /api/auth/signup - Register user
-POST /api/auth/login - Login user
-GET /api/tasks - Get user tasks (JWT required)
-POST /api/tasks - Create task (JWT required)
-PUT /api/tasks/:id - Update task (JWT required)
-DELETE /api/tasks/:id - Delete task (JWT required)
-PATCH /api/tasks/:id/toggle - Toggle task status (JWT required)
+---
