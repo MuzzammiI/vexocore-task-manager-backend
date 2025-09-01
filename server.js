@@ -52,7 +52,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173", // Local frontend
-      "https://task-manager-frontend.vercel.app", // Deployed frontend
+      "https://vexocore-task-manager-frontend.vercel.app/", // Deployed frontend
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
