@@ -63,6 +63,8 @@ Make sure you have the following installed on your machine:
     # Port for the local server
     PORT=5000
     ```
+    ** For Production level [important]
+    NODE_ENV=production
 
     -   Replace `<username>` and `<password>` with your actual MongoDB Atlas credentials.
     -   For Render deployment, ensure your MongoDB Atlas cluster allows connections from all IP addresses (`0.0.0.0/0`).
