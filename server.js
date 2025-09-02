@@ -51,7 +51,7 @@ if (process.env.NODE_ENV !== "production") {
 app.use(
   cors({
     origin: [
-      "http://localhost:5173", // Local frontend
+      // "http://localhost:5173", // Local frontend
       "https://vexocore-task-manager-frontend.vercel.app/", // Deployed frontend
     ],
     credentials: true,
